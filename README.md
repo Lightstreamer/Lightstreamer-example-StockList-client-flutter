@@ -36,7 +36,7 @@ The BasicMessageChannel `com.lightstreamer.flutter.realtime_channel` is used to 
 
 ### Getting Started
 
-You can build and run the demo with [Android Studio](https://developer.android.com/studio)
+You can build and run the demo with [Android Studio](https://developer.android.com/studio).
 Just open the `android` folder from Android Studio and press `Run 'app'`.
 
 ## Target iOS Platform
