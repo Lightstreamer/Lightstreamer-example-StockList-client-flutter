@@ -19,15 +19,15 @@ Messages are passed between the client (UI) and host (platform) using platform c
 The MethodChannel is used to request actions prompted by the UI iteration such as opening and closing the connection with the Lightstreamer server and subscribing and unsubscribing particular Items.
 
 One of the BasicMessageChannel is used to send real-time updates to the UI about the status of the connection with the server.
-The latter BasicMessageChannel is used to send real-time updates to the UI about Items data.
+The second BasicMessageChannel is used to send real-time updates to the UI about Items data.
 
 ### Java Code for Android
 
-The Java code implementing these channels is contained in the android/app/src/main/java/com/lightstreamer/flutter_example/MainActivity.java.
+The Java code implementing these channels is developed in the [MainActivity.java](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/blob/main/android/app/src/main/java/com/lightstreamer/flutter_example/MainActivity.java).
 The MethodChannel `com.lightstreamer.flutter/LightstreamerClient` defines three methods: 
  - *connect* to call [LightstreamerClient.connect](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#connect--) in case there is not already an active client session.
  - *disconnect* to call [LightstreamerClient.connect](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#disconnect--) in case there is already an active client session. 
- - *subscribe* to call [LightstreamerClient.subscribe](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#subscribe-com.lightstreamer.client.Subscription-) if the items argument is not already subscribed, in which case [LightstreamerClient.unsubscribe](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#unsubscribe-com.lightstreamer.client.Subscription-) is instead call.
+ - *subscribe* to call [LightstreamerClient.subscribe](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#subscribe-com.lightstreamer.client.Subscription-) if the items argument is not already subscribed, in which case [LightstreamerClient.unsubscribe](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/LightstreamerClient.html#unsubscribe-com.lightstreamer.client.Subscription-) is instead called.
 
 The BasicMessageChannel `com.lightstreamer.flutter.clientStatus_channel` is used to send update messages on the status of the connection with the server, basically the events of this listener: [onStatusChange](https://sdk.lightstreamer.com/ls-android-client/4.2.5/api/com/lightstreamer/client/ClientListener.html#onStatusChange-java.lang.String-)
 
