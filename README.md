@@ -1,6 +1,6 @@
 # Lightstreamer-example-StockList-client-flutter
 
-This project includes a demo client showing integration between [Lightstreamer](https://lightstreamer.com/) and [Flutter App Development Toolkit](https://flutter.dev/).
+This project includes a demo client showing integration between [Lightstreamer](https://lightstreamer.com/){:target="\_blank"} and [Flutter App Development Toolkit](https://flutter.dev/){:target="\_blank"}.
 In particular the integration of the Lightstreamer Android Client Library and Lighstreamer iOS Client Library for Android and iOS targets respectively.
 
 
