@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Lightstreamer-Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Lightstreamer-Flutter Demo Home Page 2'),
     );
   }
 }
@@ -49,13 +50,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform =
-      MethodChannel('com.lightstreamer.flutter/LightstreamerClient');
-  static const lightstreamer_clientStatus_channel = BasicMessageChannel<String>(
-      'com.lightstreamer.flutter.clientStatus_channel', StringCodec());
-  static const lightstreamer_realtime_channel = BasicMessageChannel<String>(
-      'com.lightstreamer.flutter.realtime_channel', StringCodec());
-
   // Get the number of Lightstreamer sessions currently active on your server.
   String _lsclientStatus = " -- ";
 
@@ -70,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String _name7 = " ---- ";
   String _time7 = " ---- ";
   String _last7 = " ---- ";
+
+  String static_sub_id_2 = "";
+  String static_sub_id_7 = "";
 
   /*
   Future<void> _getBatteryLevel() async {
@@ -105,33 +102,28 @@ class _MyHomePageState extends State<MyHomePage> {
     return "ok";
   }
 
-  Future<String> _consumeRTMessage(String? message) async {
-    String currentValue = message as String;
-
-    developer.log("Received message: " + currentValue);
-    List<String> l = currentValue.split("|");
-    String item = l.first;
-    String key = l[1];
-    String value = l.last;
+  Future<String> _consumeRTMessage(
+      String item, String fieldName, String fieldValue) async {
+    developer.log("Received update for item: " + item);
 
     setState(() {
       if (item.startsWith("item2")) {
-        if (key.startsWith("last_price")) {
-          _last2 = value;
-        } else if (key.startsWith("time")) {
-          _time2 = value;
-        } else if (key.startsWith("stock_name")) {
-          _name2 = value;
+        if (fieldName.startsWith("last_price")) {
+          _last2 = fieldValue;
+        } else if (fieldName.startsWith("time")) {
+          _time2 = fieldValue;
+        } else if (fieldName.startsWith("stock_name")) {
+          _name2 = fieldValue;
         }
 
         highlightcolor = Colors.yellow;
-      } else if (item.startsWith("item7")) {
-        if (key.startsWith("last_price")) {
-          _last7 = value;
-        } else if (key.startsWith("time")) {
-          _time7 = value;
-        } else if (key.startsWith("stock_name")) {
-          _name7 = value;
+      } else if (item.startsWith("item9")) {
+        if (fieldName.startsWith("last_price")) {
+          _last7 = fieldValue;
+        } else if (fieldName.startsWith("time")) {
+          _time7 = fieldValue;
+        } else if (fieldName.startsWith("stock_name")) {
+          _name7 = fieldValue;
         }
 
         highlightcolor7 = Colors.yellow;
@@ -144,60 +136,109 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _startRealTime() async {
     String currentStatus;
 
-    // Start receiving data from Lightstreamer
-    lightstreamer_clientStatus_channel.setMessageHandler(
-      _consumeMessage,
-    );
-
     developer.log("_startRealTime clicked.");
 
     try {
-      final int result = await platform.invokeMethod('connect');
-    } on PlatformException catch (e) {
-      currentStatus = "Problems in starting a session with Lightstreamer.";
+      Map<String, String> params = {"user": "prova1", "password": "qwerty!"};
 
-      setState(() {
-        _lsclientStatus = currentStatus;
-      });
+      currentStatus = await LightstreamerFlutterClient.connect(
+              "https://push.lightstreamer.com/", "WELCOME", params) ??
+          'Unknown client session status';
+    } on PlatformException catch (e) {
+      currentStatus =
+          "Problems in starting a session with Lightstreamer: '${e.message}' .";
     }
+
+    setState(() {
+      _lsclientStatus = currentStatus;
+    });
+
+    LightstreamerFlutterClient.setClientListener(_consumeMessage);
   }
 
   Future<void> _stopRealTime() async {
     String currentStatus;
 
     try {
-      final int result = await platform.invokeMethod('disconnect');
+      currentStatus = await LightstreamerFlutterClient.disconnect() ??
+          'Unknown client session status';
     } on PlatformException catch (e) {
-      currentStatus = "Problems in stopping a session with Lightstreamer.";
-      setState(() {
-        _lsclientStatus = currentStatus;
-      });
+      currentStatus =
+          "Problems in starting a session with Lightstreamer: '${e.message}' .";
     }
+
+    setState(() {
+      _lsclientStatus = currentStatus;
+    });
   }
 
   Future<void> _subscribe(String items) async {
     // Start receiving data from Lightstreamer
-    lightstreamer_realtime_channel.setMessageHandler(
-      _consumeRTMessage,
-    );
+
+    String? subId = "";
 
     developer.log("_subscribe clicked.");
 
-    try {
-      final int result =
-          await platform.invokeMethod('subscribe', {"Items": items});
+    if (items.startsWith("item2")) {
+      if (static_sub_id_2 == "") {
+        try {
+          Map<String, String> params = {
+            "dataAdapter": "STOCKS",
+            "requestedMaxFrequency": "7",
+            "requestedSnapshot": "yes"
+          };
+          subId = await LightstreamerFlutterClient.subscribe(
+              "MERGE",
+              items.split(","),
+              "last_price,time,stock_name".split(","),
+              params);
 
-      setState(() {
-        if (result == 0) {
-          if (items.startsWith("item2")) {
-            highlightcolor = Colors.blueGrey;
-          } else if (items.startsWith("item7")) {
-            highlightcolor7 = Colors.blueGrey;
-          }
+          static_sub_id_2 = subId as String;
+
+          LightstreamerFlutterClient.setSubscriptionListener(
+              subId, _consumeRTMessage);
+        } on PlatformException catch (e) {
+          // ...
         }
-      });
-    } on PlatformException catch (e) {
-      _name2 = "Not subscribed.";
+      } else {
+        try {
+          subId = await LightstreamerFlutterClient.unsubscribe(static_sub_id_2);
+
+          static_sub_id_2 = "";
+        } on PlatformException catch (e) {
+          // ...
+        }
+      }
+    } else {
+      if (static_sub_id_7 == "") {
+        try {
+          Map<String, String> params = {
+            "dataAdapter": "STOCKS",
+            "requestedMaxFrequency": "7",
+            "requestedSnapshot": "yes"
+          };
+          subId = await LightstreamerFlutterClient.subscribe(
+              "MERGE",
+              items.split(","),
+              "last_price,time,stock_name".split(","),
+              params);
+
+          static_sub_id_7 = subId as String;
+
+          LightstreamerFlutterClient.setSubscriptionListener(
+              subId, _consumeRTMessage);
+        } on PlatformException catch (e) {
+          // ...
+        }
+      } else {
+        try {
+          subId = await LightstreamerFlutterClient.unsubscribe(static_sub_id_7);
+
+          static_sub_id_7 = "";
+        } on PlatformException catch (e) {
+          // ...
+        }
+      }
     }
   }
 
@@ -266,8 +307,8 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(backgroundColor: highlightcolor),
             ),
             ElevatedButton(
-              child: const Text('Sub/Unsub to item7'),
-              onPressed: () => _subscribe('item7'),
+              child: const Text('Sub/Unsub to item9'),
+              onPressed: () => _subscribe('item9'),
             ),
             Text(
               _name7,
