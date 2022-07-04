@@ -84,21 +84,24 @@ class _MyHomePageState extends State<MyHomePage> {
   } */
 
   Future<String> _consumeMessage(String? message) async {
-    String currentStatus = message as String;
+    String currentMessage = message as String;
 
-    developer.log("Received message: " + currentStatus);
+    if (currentMessage.startsWith("StatusChange:")) {
+      String currentStatus = currentMessage.split(":")[1];
 
-    setState(() {
-      _lsclientStatus = currentStatus;
-      if (_lsclientStatus.startsWith("CONNECTED")) {
-        statuscolor = Colors.green;
-      } else if (_lsclientStatus.startsWith("DISCONNECTED")) {
-        statuscolor = Colors.red;
-      } else if (_lsclientStatus.startsWith("CONNECTING")) {
-        statuscolor = Colors.orange;
-      }
-    });
+      developer.log("Received message: " + currentStatus);
 
+      setState(() {
+        _lsclientStatus = currentStatus;
+        if (_lsclientStatus.startsWith("CONNECTED")) {
+          statuscolor = Colors.green;
+        } else if (_lsclientStatus.startsWith("DISCONNECTED")) {
+          statuscolor = Colors.red;
+        } else if (_lsclientStatus.startsWith("CONNECTING")) {
+          statuscolor = Colors.orange;
+        }
+      });
+    }
     return "ok";
   }
 

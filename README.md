@@ -15,7 +15,6 @@ and the subscription of a couple of Items of the demo StockList to get the real-
 To add the Lightstreamer plugin to your Flutter applicationm
 1. Depend on it. Open the `pubspec.yaml` file located inside the app folder, and add `lightstreamer_flutter_client: ` under dependencies.
 
-        ```dart
         dependencies:
             flutter:
                 sdk: flutter
@@ -25,14 +24,12 @@ To add the Lightstreamer plugin to your Flutter applicationm
             cupertino_icons: ^1.0.2
             # The following adds the Lightstreamer plugin to your application.
             lightstreamer_flutter_client: ^1.0.0
-        ```
 
 2. Install it. From the terminal: `Run flutter pub get` or from Android Studio/IntelliJ: Click Packages get in the action ribbon at the top of pubspec.yaml. From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
 3. Import it. Add a corresponding import statement in the Dart code.
 
-        ```dart
         import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';
-        ```
+
 
 ## Target Android Platform
 
