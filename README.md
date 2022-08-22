@@ -40,7 +40,7 @@ Just open the `android` folder from Android Studio and press `Run 'app'`.
 
 ## Target iOS Platform
 
-To run build and run the demo with [Xcode](https://developer.apple.com/xcode/), open the file `ios/Runner.xcworkspace` and click the menu item `Product>Run`. The first time, you may need to run the commands `flutter pub get` and `flutter build ios` from the terminal.
+To build and run the demo with [Xcode](https://developer.apple.com/xcode/), open the file `ios/Runner.xcworkspace` and click the menu item `Product>Run`. The first time, you may need to run the commands `flutter pub get` and `flutter build ios` from the terminal.
 
 ## See Also
 
