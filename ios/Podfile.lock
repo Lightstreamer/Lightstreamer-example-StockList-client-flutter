@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  lightstreamer_flutter_client: 04c32ecdb06bd3b0fb2bb90c71f947201e56f08c
+  lightstreamer_flutter_client: 7517720aa4b2127b305bbc3517ed08ecb6d9a1c4
   LightstreamerClient: 0e32bab3b1d5a0af23c4a6425f056cd29699824f
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
