@@ -12,7 +12,8 @@ and the subscription of a couple of Items of the demo StockList to get the real-
 
 ### Import the package
 
-To add the Lightstreamer plugin to your Flutter applicationm
+To add the Lightstreamer plugin to your Flutter application:
+
 1. Depend on it. Open the `pubspec.yaml` file located inside the app folder, and add `lightstreamer_flutter_client: ` under dependencies.
 
         dependencies:
@@ -25,7 +26,8 @@ To add the Lightstreamer plugin to your Flutter applicationm
             # The following adds the Lightstreamer plugin to your application.
             lightstreamer_flutter_client: ^1.0.0
 
-2. Install it. From the terminal: `Run flutter pub get` or from Android Studio/IntelliJ: Click Packages get in the action ribbon at the top of pubspec.yaml. From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
+2. Install it. From the terminal: run `flutter pub get`. From Android Studio/IntelliJ: Click Packages get in the action ribbon at the top of pubspec.yaml. From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
+
 3. Import it. Add a corresponding import statement in the Dart code.
 
         import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';
@@ -33,16 +35,12 @@ To add the Lightstreamer plugin to your Flutter applicationm
 
 ## Target Android Platform
 
-The demo targets only the Android platform since the lightstreamer_flutter_client at the moment only support Android platform.
-
-### Getting Started
-
 You can build and run the demo with [Android Studio](https://developer.android.com/studio).
 Just open the `android` folder from Android Studio and press `Run 'app'`.
 
 ## Target iOS Platform
 
-Coming soon.
+To run build and rund the demo with [Xcode](https://developer.apple.com/xcode/), open the file `ios/Runner.xcworkspace` and click the menu item `Product>Run`. The first time, you may need to run the commands `flutter pub get` and `flutter build ios` from the terminal.
 
 ## See Also
 
@@ -65,3 +63,5 @@ Coming soon.
 ## Lightstreamer Compatibility Notes
 
 * Compatible with [Lightstreamer Android Client SDK](https://search.maven.org/artifact/com.lightstreamer/ls-android-client/4.2.5/jar) 4.2.0 or newer.
+
+* Compatible with [Lightstreamer Swift Client SDK](https://github.com/Lightstreamer/Lightstreamer-lib-client-swift) 5.0.0 or newer.
