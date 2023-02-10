@@ -142,6 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
     developer.log("_startRealTime clicked.");
 
     try {
+      LightstreamerFlutterClient.enableLog();
+      
       Map<String, String> params = {"user": "prova1", "password": "qwerty!"};
 
       currentStatus = await LightstreamerFlutterClient.connect(
