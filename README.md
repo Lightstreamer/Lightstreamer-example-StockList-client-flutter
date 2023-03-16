@@ -62,6 +62,6 @@ To build and run the demo with [Xcode](https://developer.apple.com/xcode/), open
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with [Lightstreamer Android Client SDK](https://search.maven.org/artifact/com.lightstreamer/ls-android-client/4.2.5/jar) 4.2.0 or newer.
+* Compatible with [Lightstreamer Android Client SDK](https://central.sonatype.com/artifact/com.lightstreamer/ls-android-client/4.2.5/jar) 4.2.0 or newer.
 
 * Compatible with [Lightstreamer Swift Client SDK](https://github.com/Lightstreamer/Lightstreamer-lib-client-swift) 5.0.0 or newer.
