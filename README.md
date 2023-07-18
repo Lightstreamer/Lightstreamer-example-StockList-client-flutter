@@ -1,7 +1,7 @@
 # Lightstreamer-example-StockList-client-flutter
 
 This project includes a demo client showing integration between [Lightstreamer](https://lightstreamer.com/) and [Flutter App Development Toolkit](https://flutter.dev/).
-In particular the demo shows how to use the [lightstreamer_flutter_client](https://pub.dev/packages/lightstreamer_flutter_client) plugin package.
+In particular the demo shows how to use the [Lightstreamer Flutter Client SDK](https://pub.dev/packages/lightstreamer_flutter_client).
 
 ![screenshot](screen_large.png)<br>
 
@@ -24,9 +24,11 @@ To add the Lightstreamer plugin to your Flutter application:
             # Use with the CupertinoIcons class for iOS style icons.
             cupertino_icons: ^1.0.2
             # The following adds the Lightstreamer plugin to your application.
-            lightstreamer_flutter_client: ^1.0.0
+            lightstreamer_flutter_client: ^1.1.0
 
-2. Install it. From the terminal: run `flutter pub get`. From Android Studio/IntelliJ: Click Packages get in the action ribbon at the top of pubspec.yaml. From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
+2. Install it. From the terminal: run `flutter pub get`.\
+From Android Studio/IntelliJ: Click `Packages get` in the action ribbon at the top of `pubspec.yaml`.\
+From VS Code: Click `Get Packages` located in right side of the action ribbon at the top of `pubspec.yaml`.
 
 3. Import it. Add a corresponding import statement in the Dart code.
 
@@ -55,13 +57,9 @@ To build and run the demo with [Xcode](https://developer.apple.com/xcode/), open
 * [Lightstreamer - Stock-List Demo - iOS Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-ios)
 * [Lightstreamer - Stock-List Demo with APNs Push Notifications - iOS Client](https://github.com/Lightstreamer/Lightstreamer-example-MPNStockList-client-ios)
 * [Lightstreamer - Stock-List Demo - Android Client](https://github.com/Lightstreamer/Lightstreamer-example-AdvStockList-client-android)
-* [Lightstreamer - Stock-List Demo - React Native Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-reactnative)
-* [Lightstreamer - Basic Stock-List Demo - OS X Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-osx)
-* [Lightstreamer - Basic Stock-List Demo - Electron Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-electron)
-* [Lightstreamer - Basic Stock-List Demo - HTML (React) Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-react)
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with [Lightstreamer Android Client SDK](https://central.sonatype.com/artifact/com.lightstreamer/ls-android-client/4.2.5/jar) 4.2.0 or newer.
+* Compatible with Lightstreamer Flutter Client SDK 1.1.0 or higher.
 
-* Compatible with [Lightstreamer Swift Client SDK](https://github.com/Lightstreamer/Lightstreamer-lib-client-swift) 5.0.0 or newer.
+* Compatible with Lightstreamer Server 7.4.0 or higher.
