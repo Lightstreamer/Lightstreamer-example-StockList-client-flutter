@@ -194,9 +194,9 @@ class _MyHomePageState extends State<MyHomePage> {
           };
           subId = await LightstreamerFlutterClient.subscribe(
               "MERGE",
-              items.split(","),
-              "last_price,time,stock_name".split(","),
-              params);
+              itemList: items.split(","),
+              fieldList: "last_price,time,stock_name".split(","),
+              parameters: params);
 
           static_sub_id_2 = subId as String;
 
@@ -224,9 +224,9 @@ class _MyHomePageState extends State<MyHomePage> {
           };
           subId = await LightstreamerFlutterClient.subscribe(
               "MERGE",
-              items.split(","),
-              "last_price,time,stock_name".split(","),
-              params);
+              itemList: items.split(","),
+              fieldList: "last_price,time,stock_name".split(","),
+              parameters: params);
 
           static_sub_id_7 = subId as String;
 
