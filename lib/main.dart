@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           LightstreamerFlutterClient.setSubscriptionListener(
               subId, _consumeRTMessage);
-        } on PlatformException catch (e) {
+        } on PlatformException {
           // ...
         }
       } else {
@@ -210,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
           subId = await LightstreamerFlutterClient.unsubscribe(static_sub_id_2);
 
           static_sub_id_2 = "";
-        } on PlatformException catch (e) {
+        } on PlatformException {
           // ...
         }
       }
@@ -232,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           LightstreamerFlutterClient.setSubscriptionListener(
               subId, _consumeRTMessage);
-        } on PlatformException catch (e) {
+        } on PlatformException {
           // ...
         }
       } else {
@@ -240,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
           subId = await LightstreamerFlutterClient.unsubscribe(static_sub_id_7);
 
           static_sub_id_7 = "";
-        } on PlatformException catch (e) {
+        } on PlatformException {
           // ...
         }
       }
