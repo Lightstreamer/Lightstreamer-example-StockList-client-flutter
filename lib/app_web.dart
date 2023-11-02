@@ -201,18 +201,22 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Start Realtime from Lightstreamer'),
               onPressed: _startRealTime,
             ),
+            SizedBox(height: 10),
             ElevatedButton(
               child: const Text('Stop Realtime from Lightstreamer'),
               onPressed: _stopRealTime,
             ),
+            SizedBox(height: 10),
             Text(
               _lsclientStatus,
               style: TextStyle(backgroundColor: statuscolor),
             ),
+            SizedBox(height: 10),
             ElevatedButton(
               child: const Text('Sub/UnSub to item2'),
               onPressed: () => _subscribe('item2'),
             ),
+            SizedBox(height: 10),
             Text(
               _name2,
               style: TextStyle(backgroundColor: highlightcolor),
@@ -225,10 +229,12 @@ class _MyHomePageState extends State<MyHomePage> {
               _last2,
               style: TextStyle(backgroundColor: highlightcolor),
             ),
+            SizedBox(height: 10),
             ElevatedButton(
               child: const Text('Sub/Unsub to item9'),
               onPressed: () => _subscribe('item9'),
             ),
+            SizedBox(height: 10),
             Text(
               _name7,
               style: TextStyle(backgroundColor: highlightcolor7),
