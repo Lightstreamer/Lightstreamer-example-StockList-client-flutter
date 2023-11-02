@@ -20,20 +20,39 @@ To add the Lightstreamer plugin to your Flutter application:
             flutter:
                 sdk: flutter
 
-            # The following adds the Cupertino Icons font to your application.
-            # Use with the CupertinoIcons class for iOS style icons.
-            cupertino_icons: ^1.0.2
             # The following adds the Lightstreamer plugin to your application.
-            lightstreamer_flutter_client: ^1.1.0
+            lightstreamer_flutter_client: ^1.2.0-a.1
 
 2. Install it. From the terminal: run `flutter pub get`.\
 From Android Studio/IntelliJ: Click `Packages get` in the action ribbon at the top of `pubspec.yaml`.\
 From VS Code: Click `Get Packages` located in right side of the action ribbon at the top of `pubspec.yaml`.
 
-3. Import it. Add a corresponding import statement in the Dart code.
+3. (iOS/Android) Add a corresponding import statement in the Dart code.
 
-        import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';
+    `import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';`
 
+4. (Web) 
+    - Get the [Lightstreamer Client Web SDK](https://www.npmjs.com/package/lightstreamer-client-web)
+
+    - Copy the file `lightstreamer-core.min.js` (or the file `lightstreamer-mpn.min.js` if you need the Web Push Notifications) in the `web` folder of your Flutter app
+
+    - Put the following line in the `<head>` section of the file `index.html` just before every other `<script>` element:
+
+        ```html
+        <script src="lightstreamer-core.min.js" data-lightstreamer-ns="lightstreamer"></script>
+        ```
+
+        or the following line if you need the Web Push Notifications via Firebase or Apple APNs
+
+        ```html
+        <script src="lightstreamer-mpn.min.js" data-lightstreamer-ns="lightstreamer"></script>
+        ```
+
+    - Add the following import to your app:
+
+        ```dart
+        import 'package:lightstreamer_flutter_client/lightstreamer_client_web.dart';
+        ```
 
 ## Target Android Platform
 
@@ -43,6 +62,10 @@ Just open the `android` folder from Android Studio and press `Run 'app'`.
 ## Target iOS Platform
 
 To build and run the demo with [Xcode](https://developer.apple.com/xcode/), open the file `ios/Runner.xcworkspace` and click the menu item `Product>Run`. The first time, you may need to run the commands `flutter pub get` and `flutter build ios` from the terminal.
+
+## Target Web Platform
+
+To run the demo on a browser, execute this command: `flutter run -d chrome`.
 
 ## See Also
 
@@ -60,6 +83,8 @@ To build and run the demo with [Xcode](https://developer.apple.com/xcode/), open
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer Flutter Client SDK 1.1.0 or higher.
+* Compatible with Lightstreamer Flutter Client SDK 1.2.0-a.1 or higher.
+
+* For a version of this example compatible with Lightstreamer SDK for Flutter Clients version 1.1.x or earlier, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/releases/tag/for_client_1.1.x).
 
 * Compatible with Lightstreamer Server 7.4.0 or higher.
