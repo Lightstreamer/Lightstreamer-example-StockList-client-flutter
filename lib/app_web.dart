@@ -11,14 +11,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff4c8f4c)),
+          ),
+        ),
       ),
       home: MyHomePage(title: 'Lightstreamer - Flutter Demo'),
     );
@@ -171,11 +168,48 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
+    final theme = Theme.of(context);
+    final style = theme.textTheme.headlineMedium!.copyWith(
+      color: const Color(0xFF063d27),
+      fontWeight: FontWeight.bold,
+    );
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        titleSpacing: 0,
+        toolbarHeight: 130,
+        title: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/banner.jpg',
+              fit: BoxFit.cover,
+            ),
+            Row(
+              children: [
+                FlutterLogo(
+                  size: 100,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/logo.png',
+                        fit: BoxFit.cover,
+                      ),
+                      Text(
+                        'Flutter Demo',
+                        style: style,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
