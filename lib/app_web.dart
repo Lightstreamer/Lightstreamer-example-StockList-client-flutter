@@ -63,19 +63,19 @@ class _MySubscriptionListener extends SubscriptionListener {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _lsclientStatus = " -- ";
+  String _lsclientStatus = "DISCONNECTED";
 
-  Color statuscolor = Colors.white;
+  Color statuscolor = Colors.red;
 
   Color highlightcolor = Colors.blueGrey;
   Color highlightcolor7 = Colors.blueGrey;
 
-  String _name2 = " ---- ";
-  String _time2 = " ---- ";
-  String _last2 = " ---- ";
-  String _name7 = " ---- ";
-  String _time7 = " ---- ";
-  String _last7 = " ---- ";
+  String _name2 = "";
+  String _time2 = "";
+  String _last2 = "";
+  String _name7 = "";
+  String _time7 = "";
+  String _last7 = "";
 
   final LightstreamerClient _client;
   final Subscription _sub2;
@@ -142,21 +142,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _startRealTime() {
-    _client.connect();
-  }
-
-  void _stopRealTime() {
-    _client.disconnect();
+  void _connect() {
+    if (_client.getStatus() == "DISCONNECTED") {
+      _client.connect();
+    } else {
+      _client.disconnect();
+    }
   }
 
   void _subscribe(String item) {
-    Subscription sub = (item == "item2" ? _sub2 : item == "item9" ? _sub9 : null)!;
-    if (sub.isActive()) {
-      _client.unsubscribe(sub);
-    } else {
-      _client.subscribe(sub);
-    }
+    setState(() {
+      Subscription sub = (item == "item2" ? _sub2 : item == "item9" ? _sub9 : null)!;
+      if (sub.isActive()) {
+        _client.unsubscribe(sub);
+      } else {
+        _client.subscribe(sub);
+      }
+    });
   }
 
   @override
@@ -232,54 +234,92 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              child: const Text('Start Realtime from Lightstreamer'),
-              onPressed: _startRealTime,
+              child: const Text('Connect/Disconnect'),
+              onPressed: _connect,
             ),
             SizedBox(height: 10),
+            SizedBox(
+              width: 220,
+              height: 70,
+              child: Card(
+                child: _lsclientStatus == "DISCONNECTED"
+                ? ListTile(
+                  leading: Icon(Icons.cloud_off),
+                  title: Text(_lsclientStatus),
+                  textColor: statuscolor,
+                )
+                : ListTile(
+                  leading: Icon(Icons.cloud_outlined),
+                  title: Text(_lsclientStatus.replaceFirst(':', '\n')),
+                  textColor: statuscolor,
+                ),
+              )
+            ),
+            SizedBox(height: 20),
             ElevatedButton(
-              child: const Text('Stop Realtime from Lightstreamer'),
-              onPressed: _stopRealTime,
-            ),
-            SizedBox(height: 10),
-            Text(
-              _lsclientStatus,
-              style: TextStyle(backgroundColor: statuscolor),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              child: const Text('Sub/UnSub to item2'),
+              child: const Text('Subscribe/Unsubscribe item2'),
               onPressed: () => _subscribe('item2'),
             ),
             SizedBox(height: 10),
-            Text(
-              _name2,
-              style: TextStyle(backgroundColor: highlightcolor),
-            ),
-            Text(
-              _time2,
-              style: TextStyle(backgroundColor: highlightcolor),
-            ),
-            Text(
-              _last2,
-              style: TextStyle(backgroundColor: highlightcolor),
+            SizedBox(
+              width: 220,
+              height: 70,
+              child: Card(
+                child: _sub2.isSubscribed() 
+                ? ListTile(
+                  leading: Text('\$$_last2'),
+                  title: Text(_name2),
+                  subtitle: Text('at $_time2'),
+                )
+                : _sub2.isActive()
+                ? ListTile(
+                  leading: Icon(Icons.notifications_active),
+                  title: Text(
+                    'Subscribed',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  )
+                )
+                : ListTile(
+                  leading: Icon(Icons.notifications_off),
+                  title: Text(
+                    'Not Subscribed',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  )
+                ),
+              ),
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              child: const Text('Sub/Unsub to item9'),
+              child: const Text('Subscribe/Unsubscribe item9'),
               onPressed: () => _subscribe('item9'),
             ),
             SizedBox(height: 10),
-            Text(
-              _name7,
-              style: TextStyle(backgroundColor: highlightcolor7),
-            ),
-            Text(
-              _time7,
-              style: TextStyle(backgroundColor: highlightcolor7),
-            ),
-            Text(
-              _last7,
-              style: TextStyle(backgroundColor: highlightcolor7),
+            SizedBox(
+              width: 220,
+              height: 70,
+              child: Card(
+                child: _sub9.isSubscribed() 
+                ? ListTile(
+                  leading: Text('\$$_last7'),
+                  title: Text(_name7),
+                  subtitle: Text('at $_time7'),
+                )
+                : _sub9.isActive()
+                ? ListTile(
+                  leading: Icon(Icons.notifications_active),
+                  title: Text(
+                    'Subscribed',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  )
+                )
+                : ListTile(
+                  leading: Icon(Icons.notifications_off),
+                  title: Text(
+                    'Not Subscribed',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  )
+                ),
+              ),
             ),
           ],
         ),
