@@ -27,8 +27,40 @@
   <link rel="manifest" href="manifest.json">
 
   <script src="https://unpkg.com/lightstreamer-client-web@9.0.0/lightstreamer-core.min.js" data-lightstreamer-ns="lightstreamer"></script>
+  <style>
+    .ribbon {
+      z-index: 1;
+      background-color: #003D06;
+      overflow: hidden;
+      white-space: nowrap;
+      position: absolute;
+      right: -62px;
+      top: 38px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      -webkit-box-shadow: 0 0 10px #888;
+      -moz-box-shadow: 0 0 10px #888;
+      box-shadow: 0 0 10px #888;
+    }
+    .ribbon a {
+      color: #fff;
+      display: block;
+      font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 1px 0;
+      padding: 10px 50px;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 0 5px #444;
+    }
+  </style>
 </head>
 <body>
+  <div class="ribbon">
+    <a href="https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter">Fork me on GitHub</a>
+  </div>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
