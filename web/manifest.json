@@ -1,6 +1,6 @@
 {
-    "name": "batteryleve",
-    "short_name": "batteryleve",
+    "name": "FlutterDemo",
+    "short_name": "FlutterDemo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

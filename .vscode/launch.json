@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "batteryleve",
+            "name": "FlutterDemo",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "batteryleve (profile mode)",
+            "name": "FlutterDemo (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "batteryleve (release mode)",
+            "name": "FlutterDemo (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
