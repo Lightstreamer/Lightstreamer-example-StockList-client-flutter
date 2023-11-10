@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lightstreamer_flutter_client/lightstreamer_client_web.dart';
+import 'package:lightstreamer_flutter_demo/client_api.dart';
 
-class LsClient extends ChangeNotifier {
-  
-  String clientStatus = "DISCONNECTED";
-  Color statusColor = Colors.red;
-
-  String name2 = "";
-  String time2 = "";
-  String last2 = "";
-  Color highlightColor2 = Colors.blueGrey;
-
-  String name9 = "";
-  String time9 = "";
-  String last9 = "";
-  Color highlightColor9 = Colors.blueGrey;
-
+class LsClient extends ILsClient {
   final LightstreamerClient _client;
   final Subscription _sub2;
   final Subscription _sub9;
