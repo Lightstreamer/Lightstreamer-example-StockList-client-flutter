@@ -10,10 +10,13 @@ PODS:
     - Starscream (~> 4.0)
   - RMJSONPatch (1.0.4)
   - Starscream (4.0.6)
+  - url_launcher_ios (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - lightstreamer_flutter_client (from `.symlinks/plugins/lightstreamer_flutter_client/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -27,6 +30,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   lightstreamer_flutter_client:
     :path: ".symlinks/plugins/lightstreamer_flutter_client/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
@@ -35,6 +40,7 @@ SPEC CHECKSUMS:
   LightstreamerClient: e0b437e54d486926293ca995fde44d0f7ff19f6c
   RMJSONPatch: 60d351ad27d164352f8ea6b055c07c976f1bd2d1
   Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
+  url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 
