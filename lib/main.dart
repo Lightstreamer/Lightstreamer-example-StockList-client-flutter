@@ -44,140 +44,146 @@ class MyHomePage extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 0,
-        toolbarHeight: 130,
-        title: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/banner.jpg',
-              fit: BoxFit.cover,
+      body: Column(
+        children: [
+          SafeArea(
+            child: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                Image.asset(
+                  'assets/banner.jpg',
+                  fit: BoxFit.cover,
+                  height: 130,
+                  width: double.infinity,
+                ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => launchUrl(Uri.parse('https://flutter.dev')),
+                      child: FlutterLogo(
+                        size: 100,
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => launchUrl(
+                                Uri.parse('https://www.lightstreamer.com')),
+                            child: Image.asset(
+                              'assets/logo.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Text(
+                            'Flutter Demo',
+                            style: style,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () => launchUrl(Uri.parse('https://flutter.dev')),
-                  child: FlutterLogo(
-                    size: 100,
+          ),
+          SizedBox(height: 100),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  child: const Text('Connect/Disconnect'),
+                  onPressed: client.connect,
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: 220,
+                  height: 70,
+                  child: Card(
+                    child: client.clientStatus == "DISCONNECTED"
+                    ? ListTile(
+                      leading: Icon(Icons.cloud_off),
+                      title: Text(client.clientStatus),
+                      textColor: client.statusColor,
+                    )
+                    : ListTile(
+                      leading: Icon(Icons.cloud_outlined),
+                      title: Text(client.clientStatus.replaceFirst(':', '\n')),
+                      textColor: client.statusColor,
+                    ),
+                  )
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  child: const Text('Subscribe/Unsubscribe item2'),
+                  onPressed: () => client.subscribe('item2'),
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: 220,
+                  height: 70,
+                  child: Card(
+                    child: client.sub2IsSubscribed
+                    ? ListTile(
+                      leading: Text('\$${client.last2}'),
+                      title: Text(client.name2),
+                      subtitle: Text('at ${client.time2}'),
+                    )
+                    : client.sub2IsActive
+                    ? ListTile(
+                      leading: Icon(Icons.notifications_active),
+                      title: Text(
+                        'Subscribed',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )
+                    )
+                    : ListTile(
+                      leading: Icon(Icons.notifications_off),
+                      title: Text(
+                        'Not Subscribed',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )
+                    ),
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () => launchUrl(Uri.parse('https://www.lightstreamer.com')),
-                        child: Image.asset(
-                          'assets/logo.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        'Flutter Demo',
-                        style: style,
-                      ),
-                    ],
+                SizedBox(height: 10),
+                ElevatedButton(
+                  child: const Text('Subscribe/Unsubscribe item9'),
+                  onPressed: () => client.subscribe('item9'),
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: 220,
+                  height: 70,
+                  child: Card(
+                    child: client.sub9IsSubscribed
+                    ? ListTile(
+                      leading: Text('\$${client.last9}'),
+                      title: Text(client.name9),
+                      subtitle: Text('at ${client.time9}'),
+                    )
+                    : client.sub9IsActive
+                    ? ListTile(
+                      leading: Icon(Icons.notifications_active),
+                      title: Text(
+                        'Subscribed',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )
+                    )
+                    : ListTile(
+                      leading: Icon(Icons.notifications_off),
+                      title: Text(
+                        'Not Subscribed',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )
+                    ),
                   ),
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: const Text('Connect/Disconnect'),
-              onPressed: client.connect,
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              height: 70,
-              child: Card(
-                child: client.clientStatus == "DISCONNECTED"
-                ? ListTile(
-                  leading: Icon(Icons.cloud_off),
-                  title: Text(client.clientStatus),
-                  textColor: client.statusColor,
-                )
-                : ListTile(
-                  leading: Icon(Icons.cloud_outlined),
-                  title: Text(client.clientStatus.replaceFirst(':', '\n')),
-                  textColor: client.statusColor,
-                ),
-              )
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Subscribe/Unsubscribe item2'),
-              onPressed: () => client.subscribe('item2'),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              height: 70,
-              child: Card(
-                child: client.sub2IsSubscribed
-                ? ListTile(
-                  leading: Text('\$${client.last2}'),
-                  title: Text(client.name2),
-                  subtitle: Text('at ${client.time2}'),
-                )
-                : client.sub2IsActive
-                ? ListTile(
-                  leading: Icon(Icons.notifications_active),
-                  title: Text(
-                    'Subscribed',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  )
-                )
-                : ListTile(
-                  leading: Icon(Icons.notifications_off),
-                  title: Text(
-                    'Not Subscribed',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  )
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              child: const Text('Subscribe/Unsubscribe item9'),
-              onPressed: () => client.subscribe('item9'),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              height: 70,
-              child: Card(
-                child: client.sub9IsSubscribed
-                ? ListTile(
-                  leading: Text('\$${client.last9}'),
-                  title: Text(client.name9),
-                  subtitle: Text('at ${client.time9}'),
-                )
-                : client.sub9IsActive
-                ? ListTile(
-                  leading: Icon(Icons.notifications_active),
-                  title: Text(
-                    'Subscribed',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  )
-                )
-                : ListTile(
-                  leading: Icon(Icons.notifications_off),
-                  title: Text(
-                    'Not Subscribed',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  )
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
