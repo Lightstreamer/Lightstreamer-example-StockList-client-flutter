@@ -76,6 +76,7 @@ To run the demo on a browser, execute this command: `flutter run -d chrome`.
 
 ### Related Projects
 
+* [Lightstreamer Flutter Client SDK](https://pub.dev/packages/lightstreamer_flutter_client)
 * [Lightstreamer - Stock-List Demos - HTML Clients](https://github.com/Lightstreamer/Lightstreamer-example-Stocklist-client-javascript)
 * [Lightstreamer - Stock-List Demo - iOS Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-ios)
 * [Lightstreamer - Stock-List Demo with APNs Push Notifications - iOS Client](https://github.com/Lightstreamer/Lightstreamer-example-MPNStockList-client-ios)
