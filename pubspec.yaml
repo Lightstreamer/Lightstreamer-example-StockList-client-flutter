@@ -28,7 +28,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   # The following adds the Lightstreamer plugin to your application.
-  lightstreamer_flutter_client: ^1.2.0-a.1
+  lightstreamer_flutter_client: ^1.2.0
   provider: ^6.1.1
   url_launcher: ^6.2.1
 

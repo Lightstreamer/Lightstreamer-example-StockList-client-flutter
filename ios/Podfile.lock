@@ -1,14 +1,14 @@
 PODS:
   - Alamofire (5.8.1)
   - Flutter (1.0.0)
-  - lightstreamer_flutter_client (1.1.1):
+  - lightstreamer_flutter_client (1.2.0):
     - Flutter
-    - LightstreamerClient (~> 6.0.1)
-  - LightstreamerClient (6.0.1):
-    - Alamofire (~> 5.2)
-    - RMJSONPatch (~> 1.0)
-    - Starscream (~> 4.0)
-  - RMJSONPatch (1.0.4)
+    - LightstreamerClient (~> 6.1.0)
+  - LightstreamerClient (6.1.0):
+    - Alamofire (~> 5.8.1)
+    - RMJSONPatch (~> 1.0.5)
+    - Starscream (~> 4.0.6)
+  - RMJSONPatch (1.0.5)
   - Starscream (4.0.6)
   - url_launcher_ios (0.0.1):
     - Flutter
@@ -36,12 +36,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  lightstreamer_flutter_client: 388e75f19295eb5387e9d832fe54dc37e0f10379
-  LightstreamerClient: e0b437e54d486926293ca995fde44d0f7ff19f6c
-  RMJSONPatch: 60d351ad27d164352f8ea6b055c07c976f1bd2d1
+  lightstreamer_flutter_client: 496e9c7cb2aa7aff268a29a8148e6e8517a5f226
+  LightstreamerClient: 2be59f1da48fe1b8b9866c8f2fd723769c26a847
+  RMJSONPatch: 9d08c18158c5a224ec471d876457f65cdafb1ecb
   Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
   url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.3

@@ -21,7 +21,7 @@ To add the Lightstreamer plugin to your Flutter application:
                 sdk: flutter
 
             # The following adds the Lightstreamer plugin to your application.
-            lightstreamer_flutter_client: ^1.2.0-a.1
+            lightstreamer_flutter_client: ^1.2.0
 
 2. Install it. From the terminal: run `flutter pub get`.\
 From Android Studio/IntelliJ: Click `Packages get` in the action ribbon at the top of `pubspec.yaml`.\
@@ -84,7 +84,7 @@ To run the demo on a browser, execute this command: `flutter run -d chrome`.
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer Flutter Client SDK 1.2.0-a.1 or higher.
+* Compatible with Lightstreamer Flutter Client SDK 1.2.0 or higher.
 
 * For a version of this example compatible with Lightstreamer SDK for Flutter Clients version 1.1.x or earlier, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/releases/tag/for_client_1.1.x).
 
