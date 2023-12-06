@@ -3,6 +3,8 @@
 This project includes a demo client showing integration between [Lightstreamer](https://lightstreamer.com/) and [Flutter App Development Toolkit](https://flutter.dev/).
 In particular the demo shows how to use the [Lightstreamer Flutter Client SDK](https://pub.dev/packages/lightstreamer_flutter_client).
 
+## Live Demo
+
 [![Demo ScreenShot](screen_large.png)](https://demos.lightstreamer.com/FlutterDemo/)
 
 ### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](https://demos.lightstreamer.com/FlutterDemo/)
