@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';
+import 'package:lightstreamer_flutter_client/lightstreamer_client.dart';
 import 'package:lightstreamer_flutter_demo/client_api.dart';
 
 class LsClient extends ILsClient {
-  String subId2 = "";
-  String subId9 = "";
-
-  bool get sub2IsActive => subId2 != "";
+  bool get sub2IsActive => _sub2 != null;
   bool get sub2IsSubscribed => sub2IsActive && name2 != "";
-  bool get sub9IsActive => subId9 != "";
+  bool get sub9IsActive => _sub9 != null;
   bool get sub9IsSubscribed => sub9IsActive && name9 != "";
 
-  LsClient() {
-    LightstreamerFlutterClient.enableLog();
+  // WARNING keep strong references to LightstreamerClients, Subscriptions, MpnDevices and MpnSubscriptions 
+  // to receive related events
+  LightstreamerClient _client;
+  Subscription? _sub2, _sub9;
+
+  LsClient() : _client = LightstreamerClient("https://push.lightstreamer.com/", "WELCOME") {
+    _client.addListener(_MyClientListener(this));
+    LightstreamerClient.setLoggerProvider(ConsoleLoggerProvider(ConsoleLogLevel.WARN));
   }
 
   connect() async {
     if (clientStatus == "DISCONNECTED") {
-      clientStatus = await LightstreamerFlutterClient.connect("https://push.lightstreamer.com/", "WELCOME", {}) ?? "UNKNOWN";
-      LightstreamerFlutterClient.setClientListener(_consumeMessage);
+      await _client.connect();
+      clientStatus = await _client.getStatus();
     } else {
-      clientStatus = await LightstreamerFlutterClient.disconnect() ?? "UNKNOWN";
+      await _client.disconnect();
       name2 = name9 = "";
     }
 
@@ -29,42 +32,32 @@ class LsClient extends ILsClient {
 
   subscribe(String item) async {
     if (item.startsWith("item2")) {
-      if (subId2 == "") {
-        Map<String, String> params = {
-          "dataAdapter": "STOCKS",
-          "requestedMaxFrequency": "7",
-          "requestedSnapshot": "yes"
-        };
-        subId2 = await LightstreamerFlutterClient.subscribe(
-          "MERGE",
-          itemList: [item],
-          fieldList: "last_price,time,stock_name".split(","),
-          parameters: params
-        ) ?? "";
-
-        LightstreamerFlutterClient.setSubscriptionListener(subId2, _consumeRTMessage);
+      if (_sub2 == null) {
+        var sub = Subscription("MERGE", [item], ["last_price", "time", "stock_name"]);
+        sub.setDataAdapter("STOCKS");
+        sub.setRequestedSnapshot("yes");
+        sub.setRequestedMaxFrequency("7");
+        sub.addListener(_MySubscriptionListener(this));
+        _sub2 = sub;
+        await _client.subscribe(sub);
       } else {
-        await LightstreamerFlutterClient.unsubscribe(subId2);
-        subId2 = "";
+        var sub = _sub2!;
+        _sub2 = null;
+        await _client.unsubscribe(sub);
       }
     } else {
-      if (subId9 == "") {
-        Map<String, String> params = {
-          "dataAdapter": "STOCKS",
-          "requestedMaxFrequency": "7",
-          "requestedSnapshot": "yes"
-        };
-        subId9 = await LightstreamerFlutterClient.subscribe(
-          "MERGE",
-          itemList: [item],
-          fieldList: "last_price,time,stock_name".split(","),
-          parameters: params
-        ) ?? "";
-
-        LightstreamerFlutterClient.setSubscriptionListener(subId9, _consumeRTMessage);
+      if (_sub9 == null) {
+        var sub = Subscription("MERGE", [item], ["last_price", "time", "stock_name"]);
+        sub.setDataAdapter("STOCKS");
+        sub.setRequestedSnapshot("yes");
+        sub.setRequestedMaxFrequency("7");
+        sub.addListener(_MySubscriptionListener(this));
+        _sub9 = sub;
+        await _client.subscribe(sub);
       } else {
-          await LightstreamerFlutterClient.unsubscribe(subId9);
-          subId9 = "";
+        var sub = _sub9!;
+        _sub9 = null;
+        await _client.unsubscribe(sub);
       }
     }
 
@@ -109,5 +102,28 @@ class LsClient extends ILsClient {
     }
 
     notifyListeners();
+  }
+}
+
+class _MyClientListener extends ClientListener {
+  final LsClient _client;
+  _MyClientListener(this._client);
+
+  @override
+  void onStatusChange(String status) {
+    _client._consumeMessage("StatusChange:$status");
+  }
+}
+
+class _MySubscriptionListener extends SubscriptionListener {
+  final LsClient _client;
+  _MySubscriptionListener(this._client);
+
+  @override
+  void onItemUpdate(ItemUpdate update) {
+    var item = update.getItemName() ?? "";
+    for (var e in update.getChangedFields().entries) {
+      _client._consumeRTMessage(item, e.key, e.value ?? "");
+    }
   }
 }
