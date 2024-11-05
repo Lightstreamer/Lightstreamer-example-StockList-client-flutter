@@ -18,22 +18,20 @@ and the subscription of a couple of Items of the demo StockList to get the real-
 
 To add the Lightstreamer plugin to your Flutter application:
 
-1. Depend on it. Open the `pubspec.yaml` file located inside the app folder, and add `lightstreamer_flutter_client: ` under dependencies.
+1. Open the `pubspec.yaml` file located inside the app folder, and add `lightstreamer_flutter_client: ` under dependencies.
 
         dependencies:
             flutter:
                 sdk: flutter
 
             # The following adds the Lightstreamer plugin to your application.
-            lightstreamer_flutter_client: ^1.2.0
+            lightstreamer_flutter_client: ^2.0.0
 
-2. Install it. From the terminal: run `flutter pub get`.\
-From Android Studio/IntelliJ: Click `Packages get` in the action ribbon at the top of `pubspec.yaml`.\
-From VS Code: Click `Get Packages` located in right side of the action ribbon at the top of `pubspec.yaml`.
+2. From the terminal, run `flutter pub get`.
 
 3. (iOS/Android) Add a corresponding import statement in the Dart code.
 
-    `import 'package:lightstreamer_flutter_client/lightstreamer_flutter_client.dart';`
+    `import 'package:lightstreamer_flutter_client/lightstreamer_client.dart';`
 
 4. (Web) 
     - Get the [Lightstreamer Client Web SDK](https://www.npmjs.com/package/lightstreamer-client-web)
@@ -46,7 +44,7 @@ From VS Code: Click `Get Packages` located in right side of the action ribbon at
         <script src="lightstreamer-core.min.js" data-lightstreamer-ns="lightstreamer"></script>
         ```
 
-        or the following line if you need the Web Push Notifications via Firebase or Apple APNs
+        (or the following line if you need the Web Push Notifications via Firebase or Apple APNs)
 
         ```html
         <script src="lightstreamer-mpn.min.js" data-lightstreamer-ns="lightstreamer"></script>
@@ -88,7 +86,9 @@ To run the demo on a browser, execute this command: `flutter run -d chrome`.
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer Flutter Client SDK 1.2.0 or higher.
+* Compatible with Lightstreamer Flutter Client SDK 2.0.0 or higher.
+
+* For a version of this example compatible with Lightstreamer SDK for Flutter Clients version 1.3.x or earlier, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/releases/tag/for_client_1.3.x).
 
 * For a version of this example compatible with Lightstreamer SDK for Flutter Clients version 1.1.x or earlier, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/releases/tag/for_client_1.1.x).
 
