@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (5.8.1)
+  - FlutterMacOS (1.0.0)
+  - lightstreamer_flutter_client (2.1.0-alpha.1):
+    - Flutter
+    - FlutterMacOS
+    - LightstreamerClient (~> 6.2.0)
+  - LightstreamerClient (6.2.0):
+    - Alamofire (~> 5.8.1)
+    - RMJSONPatch (~> 1.0.5)
+    - Starscream (~> 4.0.6)
+  - RMJSONPatch (1.0.5)
+  - Starscream (4.0.8)
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - lightstreamer_flutter_client (from `Flutter/ephemeral/.symlinks/plugins/lightstreamer_flutter_client/darwin`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - LightstreamerClient
+    - RMJSONPatch
+    - Starscream
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  lightstreamer_flutter_client:
+    :path: Flutter/ephemeral/.symlinks/plugins/lightstreamer_flutter_client/darwin
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  lightstreamer_flutter_client: b01c9377946daa452750827b4dcdc7c970c60d35
+  LightstreamerClient: a2b5c87633dc43ee94e1976aaaa1aaf733cd43c4
+  RMJSONPatch: 9d08c18158c5a224ec471d876457f65cdafb1ecb
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
+  url_launcher_macos: d2691c7dd33ed713bf3544850a623080ec693d95
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.14.3

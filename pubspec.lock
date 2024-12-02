@@ -107,10 +107,9 @@ packages:
   lightstreamer_flutter_client:
     dependency: "direct main"
     description:
-      name: lightstreamer_flutter_client
-      sha256: "741963b0e3040017f92fdb9546b0790e519d911b118b47cb8403e3969fd37805"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../../lightstreamer_flutter_client"
+      relative: true
+    source: path
     version: "2.0.0"
   matcher:
     dependency: transitive
