@@ -1,8 +1,9 @@
 PODS:
   - Alamofire (5.8.1)
   - Flutter (1.0.0)
-  - lightstreamer_flutter_client (2.0.0):
+  - lightstreamer_flutter_client (2.1.0):
     - Flutter
+    - FlutterMacOS
     - LightstreamerClient (~> 6.2.0)
   - LightstreamerClient (6.2.0):
     - Alamofire (~> 5.8.1)
@@ -15,7 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - lightstreamer_flutter_client (from `.symlinks/plugins/lightstreamer_flutter_client/ios`)
+  - lightstreamer_flutter_client (from `.symlinks/plugins/lightstreamer_flutter_client/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -29,14 +30,14 @@ EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   lightstreamer_flutter_client:
-    :path: ".symlinks/plugins/lightstreamer_flutter_client/ios"
+    :path: ".symlinks/plugins/lightstreamer_flutter_client/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  lightstreamer_flutter_client: 1d195567be4cadd308f6ece9a5c681929363168c
+  lightstreamer_flutter_client: 42c9748d487122f0c82dcbfd9e888faf4f620aec
   LightstreamerClient: a2b5c87633dc43ee94e1976aaaa1aaf733cd43c4
   RMJSONPatch: 9d08c18158c5a224ec471d876457f65cdafb1ecb
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
