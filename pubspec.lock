@@ -76,10 +76,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      sha256: "53385261521cc4a0c4658fd0ad07a7d14591cf8fc33abbceae306ddb974888dc"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.7"
+    version: "0.7.2"
   leak_tracker:
     dependency: transitive
     description:
@@ -108,10 +108,10 @@ packages:
     dependency: "direct main"
     description:
       name: lightstreamer_flutter_client
-      sha256: e4971f8ae68c15695391697deb41b9c9f2f83f2f1c02cf264af06869d16e2329
+      sha256: "782c30d693a373a457749a09d1d507d9afbd249179b896bc068ab1d4c554e301"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.3"
+    version: "2.2.1"
   matcher:
     dependency: transitive
     description:

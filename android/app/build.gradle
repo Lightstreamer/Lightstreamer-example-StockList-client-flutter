@@ -34,6 +34,13 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    packaging {
+        resources {
+            // Exclude OkHttp META-INF files to prevent duplicate metadata merge conflicts
+            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
+    }
 }
 
 flutter {
