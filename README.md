@@ -80,7 +80,7 @@ You can run your app by right-clicking `lightstreamer_flutter_demo` in the Solut
 
 * Compatible with Lightstreamer Server 7.4.0 or higher.
 
-* Compatible with Lightstreamer Flutter Plugin 2.1.0 or higher.
+* Compatible with Lightstreamer Flutter Plugin 2.3.0 or higher.
 
 * For a version of this example compatible with Lightstreamer SDK for Flutter Clients version 1.3.x or earlier, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-flutter/releases/tag/for_client_1.3.x).
 

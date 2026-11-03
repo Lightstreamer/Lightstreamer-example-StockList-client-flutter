@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Lightstreamer/Lightstreamer-lib-client-swift.git",
       "state" : {
-        "revision" : "d5201092b22d37b2fd6f2211ed032e11805551b9",
-        "version" : "6.3.0"
+        "revision" : "ebda6e7792dba5d5b8dfed7679fc6b045b7a5925",
+        "version" : "6.5.0"
       }
     },
     {
