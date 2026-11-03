@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "lightstreamer-lib-client-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lightstreamer/Lightstreamer-lib-client-swift.git",
+      "state" : {
+        "revision" : "d5201092b22d37b2fd6f2211ed032e11805551b9",
+        "version" : "6.3.0"
+      }
+    },
+    {
+      "identity" : "swift-jsonpatch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/raymccrae/swift-jsonpatch.git",
+      "state" : {
+        "revision" : "1eb12363c1ee681712d2a42d2ee6f0322f92cf31",
+        "version" : "1.0.6"
+      }
+    }
+  ],
+  "version" : 2
+}
