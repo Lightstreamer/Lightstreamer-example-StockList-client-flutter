@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'client_stub.dart'
   if (dart.library.js) 'client_web.dart'
   if (dart.library.io) 'client_mobile.dart';
@@ -58,22 +57,15 @@ class MyHomePage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () => launchUrl(Uri.parse('https://flutter.dev')),
-                      child: FlutterLogo(
-                        size: 100,
-                      ),
+                    FlutterLogo(
+                      size: 100,
                     ),
                     Expanded(
                       child: Column(
                         children: [
-                          GestureDetector(
-                            onTap: () => launchUrl(
-                                Uri.parse('https://www.lightstreamer.com')),
-                            child: Image.asset(
-                              'assets/logo.png',
-                              fit: BoxFit.cover,
-                            ),
+                          Image.asset(
+                            'assets/logo.png',
+                            fit: BoxFit.cover,
                           ),
                           Text(
                             'Flutter Demo',

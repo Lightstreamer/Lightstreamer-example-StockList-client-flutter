@@ -30,7 +30,6 @@ dependencies:
   # The following adds the Lightstreamer plugin to your application.
   lightstreamer_flutter_client: ^2.2.1
   provider: ^6.1.1
-  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
